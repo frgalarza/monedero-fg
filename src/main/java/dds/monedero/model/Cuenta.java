@@ -15,7 +15,7 @@ public class Cuenta {
   private List<Movimiento> movimientos = new ArrayList<>();
 
   public Cuenta() {
-    this(0.0);
+    this(0);
   }
 
   public Cuenta(double montoInicial) {
@@ -28,7 +28,8 @@ public class Cuenta {
     if (getMovimientos().stream()
         .filter(movimiento -> movimiento.fueDepositado(LocalDate.now()))
         .count() >= 3) {
-      throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
+      int depositosMaximosPorDia = 3;
+      throw new MaximaCantidadDepositosException("Ya excedio los " + depositosMaximosPorDia + " depositos diarios");
     }
 
     agregarMovimiento(new Deposito(LocalDate.now(), cuanto));
@@ -64,7 +65,7 @@ public class Cuenta {
   public double getMontoExtraidoA(LocalDate fecha) {
     return getMovimientos().stream()
         .filter(movimiento -> !movimiento.isDeposito() && movimiento.getFecha().equals(fecha))
-        .mapToDouble(Movimiento::getMonto)
+        .mapToDouble(Movimiento::getMontoExtraido)
         .sum();
   }
 

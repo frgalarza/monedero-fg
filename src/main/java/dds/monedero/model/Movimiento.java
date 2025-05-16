@@ -44,4 +44,6 @@ public abstract class Movimiento {
 
   protected abstract boolean esDeposito();
 
+  protected  abstract double getMontoExtraido();
+
 }

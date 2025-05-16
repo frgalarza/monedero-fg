@@ -12,5 +12,10 @@ public class Deposito extends Movimiento{
     return true;
   }
 
+  @Override
+  protected double getMontoExtraido() {
+    return 0;
+  }
+
 
 }

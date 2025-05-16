@@ -31,7 +31,7 @@ public class Cuenta {
       throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
     }
 
-    agregarMovimiento(new Deposito(LocalDate.now(), cuanto, true));
+    agregarMovimiento(new Deposito(LocalDate.now(), cuanto));
     setSaldo(saldo - cuanto);
   }
 
@@ -53,7 +53,7 @@ public class Cuenta {
           "No puede extraer mas de $ " + 1000 + " diarios, " + "límite: " + limite);
     }
 
-    agregarMovimiento(new Extraccion(LocalDate.now(), cuanto, false));
+    agregarMovimiento(new Extraccion(LocalDate.now(), cuanto));
     setSaldo(saldo - cuanto);
   }
 

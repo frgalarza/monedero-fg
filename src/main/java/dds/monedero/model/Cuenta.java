@@ -31,7 +31,7 @@ public class Cuenta {
       throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
     }
 
-    agregarMovimiento(LocalDate.now(), cuanto, true);
+    agregarMovimiento(new Deposito(LocalDate.now(), cuanto, true));
     setSaldo(saldo - cuanto);
   }
 
@@ -52,14 +52,12 @@ public class Cuenta {
       throw new MaximoExtraccionDiarioException(
           "No puede extraer mas de $ " + 1000 + " diarios, " + "límite: " + limite);
     }
-    //1. Feature Envy
-    //new Movimiento(LocalDate.now(), cuanto, false).agregateA(this);
-    agregarMovimiento(LocalDate.now(), cuanto, false);
+
+    agregarMovimiento(new Extraccion(LocalDate.now(), cuanto, false));
     setSaldo(saldo - cuanto);
   }
 
-  public void agregarMovimiento(LocalDate fecha, double cuanto, boolean esDeposito) {
-    var movimiento = new Movimiento(fecha, cuanto, esDeposito);
+  public void agregarMovimiento(Movimiento movimiento) {
     movimientos.add(movimiento);
   }
 

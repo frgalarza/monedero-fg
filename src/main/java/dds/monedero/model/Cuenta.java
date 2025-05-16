@@ -32,8 +32,6 @@ public class Cuenta {
         .count() >= 3) {
       throw new MaximaCantidadDepositosException("Ya excedio los " + 3 + " depositos diarios");
     }
-    // 1. Feature Envy
-    // new Movimiento(LocalDate.now(), cuanto, true).agregateA(this);
 
     agregarMovimiento(LocalDate.now(), cuanto, true);
     setSaldo(saldo - cuanto);

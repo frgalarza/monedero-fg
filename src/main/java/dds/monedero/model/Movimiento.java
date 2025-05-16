@@ -44,6 +44,8 @@ public class Movimiento {
     return !esDeposito;
   }
 
+  /*
+  1. Feature Envy
   public void agregateA(Cuenta cuenta) {
     cuenta.setSaldo(calcularValor(cuenta));
     cuenta.agregarMovimiento(fecha, monto, esDeposito);
@@ -56,4 +58,5 @@ public class Movimiento {
       return cuenta.getSaldo() - getMonto();
     }
   }
+  */
 }

@@ -22,9 +22,7 @@ public abstract class Movimiento {
     return fecha;
   }
 
-  public boolean fueDepositado(LocalDate fecha) {
-    return isDeposito() && esDeLaFecha(fecha);
-  }
+  protected abstract boolean fueDepositado(LocalDate fecha);
 
   public boolean fueExtraido(LocalDate fecha) {
     return isExtraccion() && esDeLaFecha(fecha);

@@ -8,6 +8,11 @@ public class Deposito extends Movimiento{
   }
 
   @Override
+  protected boolean fueDepositado(LocalDate fecha) {
+    return esDeLaFecha(fecha);
+  }
+
+  @Override
   protected boolean esDeposito() {
     return true;
   }
